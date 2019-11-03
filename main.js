@@ -38,6 +38,7 @@ touchField.addEventListener('touchend', function(event) {
 
 hamburgerIcon.addEventListener('click', function(event) {
     console.log(navList.style.clientWidth);
+    navList.style.width = '300px';
     if(navList.style.display === 'none' || navList.style.display === '') {
         navList.style.display = 'flex';
     } else if(navList.style.display === 'flex'){
