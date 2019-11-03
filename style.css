@@ -46,10 +46,9 @@ body {
 @media screen and (max-width: 768px) {
     #nav-list {
         display: none;
-        width: 0px;
+        width: 300px;
         position: absolute;
-        box-shadow: 5px 0px 12px 0px #111;
-        margin-top: -72px;
+        box-shadow: 3px 13px 12px 0px #111;
     }
     .navbar-list {
         flex-direction: column;
