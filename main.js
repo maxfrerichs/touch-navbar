@@ -2,7 +2,7 @@ var touchField = document.getElementById('touch-container');
 var hamburgerIcon = document.getElementById('hamburger-icon');
 var navList = document.getElementById('nav-list');
 var initialPosition = 0;
-
+var distance;
 var navbarItem = document.getElementsByClassName('navbar-item');
 
 touchField.addEventListener('touchstart', function(event) {
@@ -14,7 +14,7 @@ touchField.addEventListener('touchstart', function(event) {
 
 touchField.addEventListener('touchmove', function(event) {
     var touchObject = event.changedTouches[0];
-    var distance = parseFloat(touchObject.clientX) - initialPosition
+    distance = parseFloat(touchObject.clientX) - initialPosition
     console.log("Distance: " + distance);
     requestAnimationFrame(function() {
         if(navList.style.display === 'none' || navList.style.display === '') {
@@ -28,10 +28,18 @@ touchField.addEventListener('touchmove', function(event) {
 
 touchField.addEventListener('touchend', function(event) {
     var width = parseFloat(navList.style.width);
-    if(width >= 120) {
+    if(distance < initialPosition) {
         console.log("Collapse!")
-    } else if(width < 120) {
+
+    } else if(distance > initialPosition) {
         console.log("Expand!")
+        requestAnimationFrame(function() {
+            animationDistance = width - distance;
+            while(navList.style.width <= 300 + "px") {
+                navList.style.width += animationDistance + "px"    
+                animationDistance++;        
+            }
+        })
     }
     console.log('touch event stopped!')
 }, false)
