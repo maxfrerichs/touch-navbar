@@ -5,6 +5,8 @@ var initialPosition = 0;
 var distance;
 var navbarItem = document.getElementsByClassName('navbar-item');
 
+
+// Registers beginning of touch event and saves coords for distance calculation
 touchField.addEventListener('touchstart', function(event) {
     var touchObject = event.changedTouches[0];
     initialPosition = parseFloat(touchObject.clientX);
@@ -12,6 +14,8 @@ touchField.addEventListener('touchstart', function(event) {
     event.preventDefault();
 }, false)
 
+
+// listens to 
 touchField.addEventListener('touchmove', function(event) {
     var touchObject = event.changedTouches[0];
     distance = parseFloat(touchObject.clientX) - initialPosition
@@ -22,12 +26,17 @@ touchField.addEventListener('touchmove', function(event) {
         }
         navList.style.width = distance + "px";
     });
-   
+    
+    // prevent event from doing shit
     event.preventDefault();
 }, false)
 
+
+// registers end of touch and triggers animation 
 touchField.addEventListener('touchend', function(event) {
     var width = parseFloat(navList.style.width);
+    
+    // TODO: Implement animation for touchend
     if(distance < initialPosition) {
         console.log("Collapse!")
 
@@ -43,6 +52,7 @@ touchField.addEventListener('touchend', function(event) {
     }
     console.log('touch event stopped!')
 }, false)
+
 
 hamburgerIcon.addEventListener('click', function(event) {
     console.log(navList.style.clientWidth);
