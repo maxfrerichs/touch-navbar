@@ -11,7 +11,7 @@ You can find issues in the "Issues" tab on GitHub
 Just clone the repo in your root folder of your web server and call the site in your browser
 
 For example (Apache2 on Linux): 
-cd /var/www/html/
+cd /var/www/html/ &&
 git clone REPO_URL 
 
 
